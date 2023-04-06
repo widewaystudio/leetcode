@@ -1,20 +1,31 @@
- function twoN(Arr,t){
-    let temp = [];
-    if(Object.prototype.toString.call(Arr) !== '[object Array]' || Arr.length < 2 ) return temp;
-    let l = Arr.length;
-    let obj = {};
-    for(let i = 0; i < l; i++){
-        let a = t - Arr[i];
-        if(typeof obj[a] === 'number'){
-            return temp.concat(obj[a],i);
-        }else{
-            obj[Arr[i]] = i;
-        }
+function addTwo(a,b){
+  let tn = 0;
 
-    }
+  while(a || b){
+      let n1 = a ? a.val : 0;
+      let n2 = b ? b.val : 0;
+      let num = n1 + n2 + tn;
+      tn = num >= 10 ? 1 : 0;
+      num = num >= 10 ? num % 10 : num;
+      console.log(num);
+      a = a ? a.next : null;
+      b = b ? b.next : null;
 
-    return temp;
+  }
+}
 
- }
 
- console.log(twoN([2,7,11,15],9))
+let a = {val:9,next:null};
+let b = {val:6,next:null};
+let c = {val:2,next:null};
+a.next = b;
+b.next = c;
+let e = {val:5,next:null};
+let f = {val:6,next:null};
+let g = {val:4,next:null};
+let h = {val:6,next:null};
+e.next = f;
+f.next = g;
+g.next = h;
+
+addTwo(a,e);
